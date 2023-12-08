@@ -1,4 +1,5 @@
 import { WebSocketServer, WebSocket } from "ws";
+import express from "express";
 
 /*
   Listens to messages:
@@ -24,7 +25,7 @@ import { WebSocketServer, WebSocket } from "ws";
   }
 */
 
-const port = Number(process.env.PORT || 8080);
+const port = Number(process.env.PORT || 3000);
 
 class Server {
   private wss: WebSocketServer;
@@ -41,7 +42,10 @@ class Server {
     this.rooms = new Map();
     this.partyToRoom = new Map();
 
-    this.wss = new WebSocketServer({ port });
+    const app = express();
+    app.get('*', (req, res) => res.send('hi!'));
+
+    this.wss = new WebSocketServer({ server: app.listen(port) });
     this.wss.on("connection", this.onConnection.bind(this));
 
     console.log('Listening on port', port);
