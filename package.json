@@ -1,0 +1,19 @@
+{
+  "name": "simple-websocket-rooms",
+  "version": "0.1.0",
+  "description": "A simple room based websocket 'chat' server",
+  "type": "module",
+  "scripts": {
+    "start": "node --import tsx server.ts"
+  },
+  "author": "Sergey Burmisov <sergey@burmisov.com> (https://burmisov.com)",
+  "license": "MIT",
+  "dependencies": {
+    "bufferutil": "^4.0.8",
+    "tsx": "^4.6.2",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.10"
+  }
+}
